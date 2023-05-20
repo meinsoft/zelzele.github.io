@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Anlıq Zəlzələ və Fay Xəritəsi</title>
+    <title>Anlık Zəlzələ və Fay Xəritəsi</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         body {
@@ -62,7 +62,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Zəlzələ və Fay Xəritəsi</h1>
+        <h1>Anlık Zəlzələ və Fay Xəritəsi</h1>
         <div class="row">
             <div class="col-lg-8">
                 <div id="map"></div>
@@ -107,9 +107,10 @@
 
                         var magnitude = properties.mag;
                         var place = properties.place;
+                        var country = place.split(", ").pop();
 
                         var marker = L.marker([coordinates[1], coordinates[0]]).addTo(map);
-                        marker.bindPopup("Şiddət: " + magnitude + "<br>Bölgə: " + place);
+                        marker.bindPopup("Şiddət: " + magnitude + "<br>Bölgə: " + place + "<br>Ölkə: " + country);
                     }
 
                     // Deprem bilgilerini listeleme
@@ -118,9 +119,11 @@
                         var properties = features[i].properties;
                         var magnitude = properties.mag;
                         var place = properties.place;
+                        var country = place.split(", ").pop();
 
                         output += "<div class='earthquake-item'>";
                         output += "<p><strong>Şiddət:</strong> " + magnitude + "</p>";
+                        output += "<p><strong>Ölkə:</strong> " + country + "</p>";
                         output += "<p><strong>Bölgə:</strong> " + place + "</p>";
                         output += "</div>";
                     }
