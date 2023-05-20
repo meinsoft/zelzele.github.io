@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Anlık Zəlzələ və Fay Xəritəsi</title>
+    <title>Anlıq Zəlzələ və Fay Xəritəsi</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         body {
@@ -62,7 +62,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Anlık Zəlzələ və Fay Xəritəsi</h1>
+        <h1>Zəlzələ və Fay Xəritəsi</h1>
         <div class="row">
             <div class="col-lg-8">
                 <div id="map"></div>
@@ -110,7 +110,7 @@
                         var country = place.split(", ").pop();
 
                         var marker = L.marker([coordinates[1], coordinates[0]]).addTo(map);
-                        marker.bindPopup("Şiddət: " + magnitude + "<br>Bölgə: " + place + "<br>Ölkə: " + country);
+                        marker.bindPopup("Şiddət: " + magnitude + "<br>Ölkə: " + country + "<br>Bölgə: " + place);
                     }
 
                     // Deprem bilgilerini listeleme
