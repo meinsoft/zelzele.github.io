@@ -109,11 +109,20 @@
                         var place = properties.place;
                         var country = place.split(", ").pop();
 
-                        var marker = L.marker([coordinates[1], coordinates[0]]).addTo(map);
+                        var markerOptions = {
+                            radius: magnitude * 2,
+                            fillColor: getMarkerColor(magnitude),
+                            color: "#000",
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: 0.8
+                        };
+
+                        var marker = L.circleMarker([coordinates[1], coordinates[0]], markerOptions).addTo(map);
                         marker.bindPopup("Şiddət: " + magnitude + "<br>Ölkə: " + country + "<br>Bölgə: " + place);
                     }
 
-                    // Deprem bilgilerini listeleme
+
                     var output = "";
                     for (var i = 0; i < features.length; i++) {
                         var properties = features[i].properties;
@@ -153,6 +162,19 @@
                     console.log("Xəta: " + error);
                 }
             });
+        }
+
+
+        function getMarkerColor(magnitude) {
+            if (magnitude < 2) {
+                return "#00FF00"
+            } else if (magnitude < 4) {
+                return "#FFFF00"; 
+            } else if (magnitude < 6) {
+                return "#FFA500"; 
+            } else {
+                return "#FF0000"; 
+            }
         }
 
         setInterval(getEarthquakes, 15000);
